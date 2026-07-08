@@ -52,7 +52,7 @@
               </a></td>
             <td><img src="<%= products[i].image %>" width="20%"></td>
             <td>
-              <%= products[i].dob.toLocaleDateString('en-GB', {day: 'numeric' ,month: 'long' ,year: 'numeric' }) %>
+              <%= products[i].dob.getFullYear() %>-<%= String(products[i].dob.getMonth() + 1).padStart(2, '0') %>-<%= String(products[i].dob.getDate()).padStart(2, '0') %>
             </td>
             <td>
               <%= products[i].contact %>
