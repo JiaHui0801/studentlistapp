@@ -38,7 +38,7 @@
         <tr>
           <th width="100">Student Name</th>
           <th width="100">Student Image</th>
-          <th width="50">Dob</th>
+          <th width="50">Date of Birth</th>
           <th width="50">Contact</th>
           <th width="50">Edit</th>
           <th width="50">Delete</th>
@@ -47,18 +47,28 @@
       <tbody>
         <% for(let i=0; i < products.length; i++) { %>
           <tr>
-            <td><a href="/product/<%= products[i].studentId %>">
+            <td>
+              <a href="/product/<%= products[i].studentId %>">
                 <%= products[i].name %>
-              </a></td>
-            <td><img src="<%= products[i].image %>" width="20%"></td>
+              </a>
+            </td>
+
+            <td>
+              <img src="/images/<%= products[i].image %>" width="20%">
+            </td>
+
             <td>
               <%= products[i].dob.toISOString().split('T')[0] %>
             </td>
+
             <td>
               <%= products[i].contact %>
             </td>
+
             <!-- Edit Link -->
-            <td><a href="/editStudent/<%= products[i].studentId %>">Edit</a></td>
+            <td>
+              <a href="/editStudent/<%= products[i].studentId %>">Edit</a>
+            </td>
 
             <!-- Delete Link -->
             <td>
@@ -67,11 +77,13 @@
                 Delete
               </a>
             </td>
+
           </tr>
-          <% } %>
+        <% } %>
       </tbody>
     </table>
   </div>
+
 </body>
 
 </html>

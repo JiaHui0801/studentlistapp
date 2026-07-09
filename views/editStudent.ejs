@@ -48,7 +48,7 @@
 
             <div class="card-body">
 
-              <form action="/editStudent/<%= product.studentId %>" method="POST">
+              <form action="/editStudent/<%= product.studentId %>" method="POST" enctype="multipart/form-data">
 
                 <div class="mb-3">
                   <label for="name" class="form-label">
@@ -72,17 +72,8 @@
                     Contact
                   </label>
 
-                  <input type="text" class="form-control" id="contact" name="contact"
-                    value="<%= product.contact %>" required>
-                </div>
-
-                <div class="mb-3">
-                  <label for="image" class="form-label">
-                    Image URL
-                  </label>
-
-                  <input type="text" class="form-control" id="image" name="image"
-                    value="<%= product.image %>" required>
+                  <input type="text" class="form-control" id="contact" name="contact" value="<%= product.contact %>"
+                    required>
                 </div>
 
                 <div class="mb-3">
@@ -91,22 +82,30 @@
                   </label>
 
                   <div class="text-center">
-                    <img src="<%= product.image %>" alt="<%= product.name %>"
-                      class="img-fluid rounded border" style="max-height: 200px;">
+                    <!-- <input type="text" name="currentImage" class='form-control' value="<%= product.image %>"
+                      readonly><br>
+                    <img src="<%= product.image %>" width="20%"><br><br>
+                  </div> -->
+                    <input type="text" name="currentImage" class='form-control' value="<%=product.image %>"
+                      readonly><br>
+                    <img src="/images/<%= product.image %>" width="20%"><br><br>
+                    <br> <input type="file" class='form-control' id="image" name="image" accept="image/*"
+                      value=<%=product.image %>
+                    ><br><br>
+
                   </div>
-                </div>
 
-                <div class="d-grid gap-2">
+                  <div class="d-grid gap-2">
 
-                  <button type="submit" class="btn btn-warning">
-                    Update Student
-                  </button>
+                    <button type="submit" class="btn btn-warning">
+                      Update Student
+                    </button>
 
-                  <a href="/" class="btn btn-secondary">
-                    Cancel
-                  </a>
+                    <a href="/" class="btn btn-secondary">
+                      Cancel
+                    </a>
 
-                </div>
+                  </div>
 
               </form>
 
@@ -114,16 +113,16 @@
 
           </div>
 
-        <% } else { %>
+          <% } else { %>
 
-          <div class="alert alert-warning text-center">
-            <h5>No student found.</h5>
-            <a href="/" class="btn btn-secondary mt-3">
-              Back to Home
-            </a>
-          </div>
+            <div class="alert alert-warning text-center">
+              <h5>No student found.</h5>
+              <a href="/" class="btn btn-secondary mt-3">
+                Back to Home
+              </a>
+            </div>
 
-        <% } %>
+            <% } %>
 
       </div>
 
